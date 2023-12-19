@@ -1,0 +1,36 @@
+import java.util.Random;
+import java.util.Scanner;
+
+/*Jogo em que o usuário tem 5 tentativas para descobrir o número aleatório*/
+public class JogoAdvinha {
+    public static void main(String[] args) {
+        Random numeroSorteado = new Random();
+        Scanner leitura = new Scanner(System.in);
+        int valorDigitado = 0;
+        int numero = 0;
+        int contador = 0;
+
+        numero = numeroSorteado.nextInt(100);    // atribui o número sorteado à variável "numero" 
+
+        while (contador != 5) {
+            System.out.println("Digite um número: ");
+            valorDigitado = leitura.nextInt();
+
+            if (valorDigitado == numero) {
+                System.out.println("Parabéns, você acertou!");
+                break;
+            } else if (valorDigitado < numero && contador != 4) {
+                System.out.println("Tente um número maior");
+            } else if (valorDigitado > numero && contador != 4) {
+                System.out.println("Tente um número menor");
+            }
+
+            contador++;
+        }
+        //caso o usuário não acerte o número dentro das 5 tentativas
+        if (contador == 5) {
+            System.out.println("Suas tentativas acabaram! O número era: " + numero + ". Quem sabe mais sorte na próxima!");
+        }
+    }
+
+}
