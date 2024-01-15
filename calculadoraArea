@@ -1,0 +1,37 @@
+//Programa que permite calcular a área de um quadrado ou de um círculo
+
+import java.util.Scanner;
+
+public class calculadoraArea {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        int escolha = 0;
+
+        System.out.println("------Menu-------");
+        System.out.println("Escolha a opção desejada:");
+        System.out.println("1 - Área do quadrado");
+        System.out.println("2 - Área do círculo");
+        System.out.println("3 - Sair");
+        escolha = scanner.nextInt();
+
+        if(escolha == 1){
+            System.out.println("Informe o comprimento do lado do quadrado");
+            double ladoQuadrado = scanner.nextDouble();
+            double areaQuadrado = ladoQuadrado * ladoQuadrado;
+            String n = String.format("%.2f", areaQuadrado);
+            System.out.println("A área do quadrado é " + n);
+
+        } else if (escolha == 2) {
+            System.out.println("Informe o raio do círculo");
+            double raioCirculo = scanner.nextDouble();
+            double areaCirculo = 3.14 * raioCirculo * raioCirculo;
+            String n = String.format("%.2f", areaCirculo);
+            System.out.println("A área do círculo é " + n);
+
+        }else {
+            System.out.println("Programa encerrado!");
+        }
+    }
+}
