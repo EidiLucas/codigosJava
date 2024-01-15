@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        String nome = "Lucas";
+        String conta = "Conta corrente";
+        double saldo = 10000.00;
+        int escolha = 0;
+
+        while (escolha!=4) {
+            String cabecalho = """
+                    ***********************************************
+                    Nome:               %s
+                    Tipo de conta:      %s
+                    Saldo:              %.2f
+                    ***********************************************""".formatted(nome, conta, saldo);
+
+            String opcoes = """
+                    1 - Consultar saldo
+                    2 - Transferência
+                    3 - Depósito
+                    4 - Sair""";
+
+            System.out.println(cabecalho);
+            System.out.println(opcoes);
+
+            Scanner scanner = new Scanner(System.in);
+            escolha = scanner.nextInt();
+
+            if (escolha == 1) {
+                System.out.println("Seu saldo é: " + saldo);
+            } else if (escolha == 2) {
+                System.out.println("Informe o valor a ser transferido:");
+                double valorTransferencia = scanner.nextDouble();
+                if (valorTransferencia > saldo) {
+                    System.out.println("Saldo insuficiente! Operação cancelada!");
+                } else {
+                    saldo = saldo - valorTransferencia;
+                    System.out.println("Valor transferido!");
+                }
+
+
+            } else if (escolha == 3) {
+                System.out.println("Informe o valor a ser depositado:");
+                double valorDeposito = scanner.nextDouble();
+                saldo = saldo + valorDeposito;
+                System.out.println("Valor depositado com sucesso!");
+            } else {
+                System.out.println("Sessão encerrada. Muito Obrigado!");
+            }
+        }
+    }
+}
